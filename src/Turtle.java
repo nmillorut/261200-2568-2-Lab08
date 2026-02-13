@@ -41,99 +41,48 @@ public class Turtle implements Runnable, ActionListener, MouseListener, MouseMot
      */
     public static void main(String[] a)
     {
-        Turtle bob = new Turtle();
-
-        bob.speed(5);
-        bob.penColor("gold");
-        bob.width(5);
-        bob.left(180);
-
-        int s=105;
-        for(int i = 0; i < 9; i++) {
-            s=s-10;
-            for (int j = 0; j < 5; j++) {
-                bob.left(144);
-                bob.forward(s);
+        Turtle t1 = new Turtle();
+        Thread turtle1 = new Thread(() -> {
+            t1.speed(100);
+            t1.penColor("red");
+            t1.left(72);
+            for(int i=0;i<5;i++){
+                t1.forward(150);
+                t1.left(72);
             }
-            bob.backward(5);
-        }
+        });
 
-        bob.up();
-        bob.left(180);
-        bob.right(90);
-        bob.forward(60);
-
-        bob.penColor("green");
-        bob.width(20);
-        bob.down();
-
-        int x=190;
-        for(int i=0;i<4;i++){
-            x=x-40;
-            bob.right(30);
-            for(int j=0;j<3;j++){
-                bob.forward(x);
-                bob.left(120);
+        Turtle t2 = new Turtle();
+        Thread turtle2 = new Thread(() -> {
+            t2.speed(100);
+            t2.penColor("blue");
+            t2.up();
+            t2.right(90);
+            t2.down();
+            t2.left(180);
+            for(int i=0;i<4;i++){
+                t2.forward(150);
+                t2.left(90);
             }
-            bob.left(30);
-            bob.forward(20);
-        }
+        });
 
-        int y=270;
-        for(int i=0;i<6;i++){
-            y=y-40;
-            bob.right(30);
-            for(int j=0;j<3;j++){
-                bob.forward(y);
-                bob.left(120);
+        Turtle t3 = new Turtle();
+        Thread turtle3 = new Thread(() -> {
+            t3.speed(100);
+            t3.penColor("green");
+            t3.up();
+            t3.forward(30);
+            t3.down();
+            for(int i=0;i<5;i++){
+                t3.forward(120);
+                t3.right(144);
             }
-            bob.left(30);
-            bob.forward(20);
-        }
+        });
 
-        int z=350;
-        for(int i=0;i<8;i++){
-            z=z-40;
-            bob.right(30);
-            for(int j=0;j<3;j++){
-                bob.forward(z);
-                bob.left(120);
-            }
-            bob.left(30);
-            bob.forward(20);
-        }
+        turtle1.start();
+        turtle2.start();
+        turtle3.start();
 
-        bob.up();
-        bob.right(45);
-        bob.forward(40);
-        bob.dot("white",20);
-        bob.right(5);
-        bob.forward(90);
-        bob.dot("dark blue",20);
-        bob.left(140);
-        bob.forward(120);
-        bob.dot("white",20);
-        bob.left(45);
-        bob.forward(90);
-        bob.dot("red",20);
-        bob.left(90);
-        bob.forward(80);
-        bob.dot("dark blue",20);
-        bob.forward(80);
-        bob.dot("red",20);
-        bob.right(120);
-        bob.forward(80);
-        bob.dot("white",20);
-        bob.left(120);
-        bob.forward(80);
-        bob.dot("dark blue",20);
-        bob.right(30);
-        bob.forward(80);
-        bob.dot("white",20);
-        bob.right(50);
-        bob.forward(70);
-        bob.dot("red",20);
-        bob.home();
     }
 
     // ========================= Don't modify the code after this point! ========================= //
